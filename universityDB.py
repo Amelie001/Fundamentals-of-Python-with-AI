@@ -179,3 +179,43 @@ def ranking():
     for i, r in enumerate(results, start = 1): 
         print(f"{i}.{r[0]} - {r[1]}")
 
+#---main menu--- 
+
+def main(): 
+    if not login(): 
+        return 
+    
+    while True: 
+        print("\n---University System---")
+        print("1. View Students")
+        print("2. View Courses")
+        print("3. Search Student")
+        print("4. Student Reports")
+        print("5. Topper")
+        print("6. Course analysis")
+        print("7. Rankings")
+        print("8. Exit")
+
+        choice = int(input("Enter choice: "))
+
+        if choice == 1:
+            view_students()
+        elif choice == 2:
+            view_courses()
+        elif choice == 3:
+            search_student()
+        elif choice == 4:
+            student_report()
+        elif choice == 5:
+            find_topper()
+        elif choice == 6:
+            course_analysis()
+        elif choice == 7:
+            ranking()
+        elif choice == 8:
+            print("Exiting.....")
+            break
+        else:
+            print("Invalid Choice.")
+
+main()
