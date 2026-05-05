@@ -58,7 +58,7 @@ def customer_spending():
         total_spent = 0 
 
         for o in orders: 
-            oid, ocid, pid, qty = 0 
+            oid, ocid, pid, qty = o 
             if ocid == cid: 
                 product = get_product_details(pid)
                 total_spent += product[2] * qty
@@ -75,10 +75,10 @@ def top_customer():
         total = 0 
 
         for o in orders: 
-            oid, ocid, pid, qty = 0 
+            oid, ocid, pid, qty = o 
             if ocid == cid: 
                 product = get_product_details(pid)
-                total += product|[2] * qty 
+                total += product[2] * qty 
 
         if total > best[1]: 
             best = (name, total)
@@ -95,7 +95,7 @@ def product_sales():
         total_qty = 0
 
         for o in orders: 
-            oid, cid, opid, qty = 0 
+            oid, cid, opid, qty = o 
 
             if opid == pid: 
                 total_qty += qty 
@@ -108,7 +108,7 @@ def total_revenue():
     revenue = 0 
 
     for o in orders: 
-        oid, cid, pid, qty = 0 
+        oid, cid, pid, qty = o 
         product = get_product_details(pid)
         revenue += product[2] * qty 
 
