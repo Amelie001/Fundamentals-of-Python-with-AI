@@ -148,3 +148,39 @@ def product_ranking():
 
     for i, r in enumerate(ranking, start=1):
         print(f"{i}, {r[0]} - Sold {r[1]}")
+
+def main():
+    while True:
+        print("\n=== E-COMMERCE SYSTEM ===")
+        print("1. View Orders")
+        print("2. Customer Spending")
+        print("3. Top Customer")
+        print("4. Product Sales")
+        print("5. Total Revenue")
+        print("6. Filter by City")
+        print("7. Product Ranking")
+        print("8. Exit")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1": 
+            view_orders()
+        elif choice == "2": 
+            customer_spending()
+        elif choice == "3": 
+            top_customer()
+        elif choice == "4": 
+            product_sales()
+        elif choice == "5": 
+            total_revenue()
+        elif choice == "6": 
+            filter_by_country()
+        elif choice == "7": 
+            product_ranking()
+        elif choice == "8": 
+            print("Exiting...")
+            break 
+        else: 
+            print("Invalid choice.")
+
+main()
