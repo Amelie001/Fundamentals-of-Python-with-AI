@@ -1,11 +1,11 @@
 # Music Recommendation System 
 
 playlists = {
-    "workout": {"Believer", "Unstoppable", "Hall of Fame"},
+    "workout": {"Believer", "Unstoppable", "Hall Of Fame"},
     "travel": {"Perfect", "Believer", "Señorita"},
     "party": {"Señorita", "Levitating", "Unstoppable"},
     "sad": {"Someone Like You", "Let Her Go", "Perfect"},
-    "liked": {"Believer", "Levitating", "Perfect", "Hall of Fame"}
+    "liked": {"Believer", "Levitating", "Perfect", "Hall Of Fame"}
 }
 
 # Function to display all playlist names 
@@ -119,3 +119,128 @@ def only_in_first_playlist():
                 print(song)
     else:
         print("One or both playlist names are invalid.")
+
+# Function to show songs in exactly one of two playlists (symmetric difference)
+def songs_in_exactly_one(): 
+    playlist1 = input("Enter first playlist name: ").lower()
+    playlist2 = input("Enter second playlist name: ").lower()
+
+    if playlist1 in playlists and playlist2 in playlists: 
+        result = playlists[playlist1].symmetric_difference(playlists[playlist2])
+
+        if len(result) == 0: 
+            print("No such songs found.")
+        else: 
+            print(
+                f"\nSongs in exectly one of {playlist1.capitalize()} or {playlist2.capitalize()} Playlists:"
+            )
+            for song in result:
+                print(song)
+    else: 
+        print("One or both playlist names are invalid.")
+
+# Function to count songs in a playlist 
+def count_songs(): 
+    playlist_name = input("Enter playlist name: ").lower()
+
+    if playlist_name in playlists: 
+        print( 
+            "Total songs in",
+            playlist_name.capitalize(),
+            "Playlist =",
+            len(playlists[playlist_name]),
+        )
+    else: 
+        print("Playlist not found.")
+
+# Function to show all unique songs in all playlists 
+def all_unique_songs(): 
+    unique_songs = set()
+
+    for playlist in playlists.values(): 
+        unique_songs = unique_songs.union(playlist)
+
+    print("\nAll Unique Songs in All Playlists:")
+    for song in unique_songs: 
+        print(song)
+
+    print("Total unique songs =", len(unique_songs))
+
+# Function to check subset 
+def check_subset():
+    playlist1 = input("Enter first playlist name: ").lower()
+    playlist2 = input("Enter second playlist name: ").lower()
+
+    if playlist1 in playlists and playlist2 in playlists: 
+        if playlists[playlist1].issubset(playlists[playlist2]):
+            print(
+                f"All songs of {playlist1.capitalize()} Playlist are present in {playlist2.capitalize()} Playlist."
+            )
+        else: 
+            print(
+                f"{playlist1.capitalize()} Playlist is NOT a subset of {playlist2.capitalize()} Playlist."
+            )
+    else:
+        print("One or both playlist names are invalid.")
+
+# Main menu 
+while True:
+    print("\n ===== Music Playlist Manager =====")
+    print("1. Display all playlists")
+    print("2. Display songs of a playlist")
+    print("3. Add song to a playlist")
+    print("4. Remove song from a playlist")
+    print("5. CHeck whether a song is in a playlist")
+    print("6. Show common songs between two playlists")
+    print("7. Show all songs from two playlists")
+    print("8. Show songs only in first playlist")
+    print("9. Show songs in exactly one of two playlists")
+    print("10. Count songs in a playlist")
+    print("11. Show all unique songs in all playlists")
+    print("12. Check if one playlist is a subset of another")
+    print("13. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        display_playlists()
+
+    elif choice == 2: 
+        display_songs()
+
+    elif choice == 3: 
+        add_song()
+
+    elif choice == 4: 
+        remove_song()
+
+    elif choice == 5: 
+        check_song()
+
+    elif choice == 6: 
+        common_songs()
+
+    elif choice == 7: 
+        all_songs_two_playlists()
+
+    elif choice == 8:
+        only_in_first_playlist()
+
+    elif choice == 9: 
+        songs_in_exactly_one()
+
+    elif choice == 10: 
+        count_songs()
+
+    elif choice == 11: 
+        all_unique_songs()
+
+    elif choice == 12: 
+        check_subset()
+
+    elif choice == 13: 
+        print("Exiting Music Playlist Manager...")
+        break
+
+    else: 
+        print("Invalid choice. Please enter a number between 1 and 13.")
