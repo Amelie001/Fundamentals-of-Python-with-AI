@@ -27,3 +27,43 @@ class Quiz:
                 "answer": "#"
             }
         ]
+
+    def start_quiz(self): 
+        print("\nWelcome to the Online Quiz!")
+        print("Student", self.student_name)
+
+        for question in self.questions: 
+            print("\n" + question["question"])
+
+            for i in range(len(question["options"])): 
+                print(i + 1, ".", question["options"][i])
+
+            choice = int(input("Enter your answer (1-4): "))
+
+            selected_answer = question["options"][choice - 1]
+
+            if selected_answer == question["answer"]: 
+                print("Correct!")
+                self.score += 1 
+
+            else: 
+                print("Wrong!")
+                print("Correct answer:", question["answer"])
+
+    def show_result(self): 
+        print("\n----- Quiz Result -----")
+        print("Student:", self.student_name)
+        print("Score:", self.score, "/", len(self.questions))
+
+        percentage = (self.score / len(self.questions)) * 100
+
+        print("Percentage:", percentage, "%")
+
+# Creating an object
+
+student1 = Quiz("Alice")
+
+# Calling methods 
+
+student1.start_quiz()
+student1.show_result()
